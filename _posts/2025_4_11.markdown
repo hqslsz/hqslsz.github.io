@@ -1,12 +1,13 @@
-
 ---
-layout:       post
-title:        "2024年4月11日西南交大雨夜异闻"
-author:       "Quasi2317"
-header-style: text
-catalog:      true
+layout:     post
+title:      "2024年4月11日西南交大雨夜异闻"
+subtitle:   "不是人类能写出来的惊世大作"
+date:       2025-4-11
+author:     "Quasi2317"
+header-img: "img/posts/2025_4_11/IMG20250411215223.jpg"
 tags:
-    - Diary
+    - 日记
+    - 见闻
 ---
 
 
