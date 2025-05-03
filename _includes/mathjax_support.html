@@ -1,20 +1,21 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ], // 支持 $...$ 和 \(...\) 行内公式
+      displayMath: [ ['$$','$$'], ['\\[','\\]'] ], // 支持 $$...$$ 和 \[...\] 独立公式
+      processEscapes: true // 允许在公式中使用 \$ 等转义字符
+    },
     TeX: {
       equationNumbers: {
-        autoNumber: "AMS"
+        autoNumber: "AMS" // 可选：启用 AMS 风格的公式编号
       }
     },
-    SVG: {
-      scale: 90
-    },
-    tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      displayMath: [ ['$$','$$'] ],
-      processEscapes: true,
-    }
+    "HTML-CSS": { linebreaks: { automatic: true } }, // 可选：支持自动换行
+    SVG: { linebreaks: { automatic: true } } // 可选：SVG 输出模式也支持自动换行
   });
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG">
-</script>
+  </script>
+  <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"> 
+          // 使用 cdnjs 的 2.7.5 版本，这是一个被广泛验证稳定的版本
+          // TeX-AMS_CHTML 配置支持常用 TeX/LaTeX 和 AMS 宏，输出为 HTML+CSS (最常用)
+  </script>
