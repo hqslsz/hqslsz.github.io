@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "Markdown数学公式语法"
+title:      "在 Termux 中安装 Arch Linux 并配置 Neovim (LazyVim)"
 subtitle:   "不是人类能写出的逆天笔记"
-date:       2025-4-25
+date:       2025-5-2
 author:     "Quasi2317"
 header-img: "img/bg-little-universe.jpg"
 mathjax: true
