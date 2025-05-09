@@ -1,3 +1,14 @@
+---
+layout:     post
+title:      "Blenderkit插件，腾讯混元3D(v2.5)协助基于项目的Blender上手体验"
+subtitle:   "不是人类能写出的逆天垃圾"
+date:       2025-5-9
+author:     "Quasi2317"
+header-img: "img/bg-little-universe.jpg"
+tags:
+    - Blender
+    - Rubbish
+---
 # Blenderkit插件，腾讯混元3D(v2.5)协助基于项目的Blender上手体验
 学习Blender这种3D建模软件是我一直以来的梦想，我希望成为我虚拟世界的造物主，看着我创造的一片虚拟天地，放着喜欢的音乐，这真是一种按摩大脑的好方法。但是我发现Wallpaper Engine已经能很好地满足我的需求，而且它还能配置BGM，所以我先学了Wallpaper Engine而搁置了学习Blender的想法。
 
