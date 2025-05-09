@@ -4,7 +4,7 @@ title:      "Blenderkit插件，腾讯混元3D(v2.5)协助基于项目的Blender
 subtitle:   "不是人类能写出的逆天垃圾"
 date:       2025-5-9
 author:     "Quasi2317"
-header-img: "img/bg-little-universe.jpg"
+header-img: "img/common-bg.jpg"
 tags:
     - Blender
     - Rubbish
