@@ -40,19 +40,31 @@ const ap = new APlayer({
     listFolded: false, // 列表默认折叠
     listMaxHeight: '250px', // 列表最大高度
     audio: [ // 歌曲列表
+        
+        {
+            name: 'ク族の沼.mp3',
+            artist: '植松伸夫',
+            url: '{{ site.baseurl }}/assets/music/ク族の沼.mp3', // 确保路径正确!
+        },
         {
             name: '隠者の書庫 ダゲレオ',
             artist: '植松伸夫',
             url: '{{ site.baseurl }}/assets/music/隠者の書庫 ダゲレオ.mp3', // 确保路径正确!
-            cover: '{{ site.baseurl }}/assets/images/covers/music.jpg', // 封面图片路径 (可选)
+        //    cover: '{{ site.baseurl }}/assets/images/covers/music.jpg', // 封面图片路径 (可选)
             // lrc: '{{ site.baseurl }}/assets/music/song1.lrc' // 歌词文件路径 (可选)
         },
         {
             name: 'ザナラーンの黄昏',
             artist: '植松伸夫,成田勤',
             url: '{{ site.baseurl }}/assets/music/Twilight over Thanalan.mp3', // 确保路径正确!
-            cover: '{{ site.baseurl }}/assets/images/covers/music.jpg', // 封面图片路径 (可选)
-        }
+        //    cover: '{{ site.baseurl }}/assets/images/covers/music.jpg', // 封面图片路径 (可选)
+        },
+        {   
+            name: 'Melodies of Life',
+            artist: '白鳥英美子',
+            url: '{{ site.baseurl }}/assets/music/Melodies of Life.mp3', // 确保路径正确!
+        //   cover: '{{ site.baseurl }}/assets/images/covers/music.jpg', // 封面图片路径 (可选)
+        },
         // 你可以添加更多歌曲...
         // {
         //     name: '歌曲名',
