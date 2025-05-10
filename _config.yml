@@ -3,8 +3,8 @@ title: Qu’s Marsh
 SEOTitle: Qu’s Marsh | ク族の沼
 header-img: img/home-bg.jpg
 email: wlrh_lishuzeWR@outlook.com
-description: "这里是 @Hux黄玄 的个人博客，与你一起发现更大的世界 | 要做一个有 swag 的程序员"
-keyword: "Quasi2317, Qu’s Marsh, Archlinux, Web安全, 电气工程及其自动化, 电力系统, 嵌入式开发, RISC-V, 前端, 像素画"
+description: "这里是 @Quasi2317 管理的沼泽，提供免费的青蛙🐸自助餐 | 世界上只有两种东西，能吃的和不能吃的"
+keyword: "Quasi2317, Qu’s Marsh, Archlinux, Web安全, FPGA, 电气工程及其自动化, 电力系统, 嵌入式开发, 前端, 像素画， Blender, Solidworks, Quartus "
 url: "https://hqslsz.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -74,7 +74,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "守得云开见月明"
+sidebar-about-description: "这真是一块圣地，这里遍地是青蛙🐸，爽！爽啊！"
 sidebar-avatar: https://github.com/hqslsz.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags

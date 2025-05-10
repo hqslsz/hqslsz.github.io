@@ -20,6 +20,49 @@
     </div>
 </footer>
 
+<!-- APlayer Container -->
+<div id="aplayer" style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999;"></div>
+<!-- APlayer JS -->
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<!-- APlayer Initialization -->
+<script>
+const ap = new APlayer({
+    container: document.getElementById('aplayer'), // 确保这里的 ID 和你上面 HTML 容器的 ID 一致
+    fixed: true, // 固定在底部
+    autoplay: false, // 是否自动播放
+    theme: '#FADFA3', // 主题色 (可选)
+    loop: 'all', // 循环播放: 'all', 'one', 'none'
+    order: 'list', // 播放顺序: 'list', 'random'
+    preload: 'auto', // 预加载: 'auto', 'metadata', 'none'
+    volume: 0.7, // 默认音量
+    mutex: true, //互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
+    lrcType: 0, //  歌词类型 (0:禁用, 1:js字符串, 2:lrc文件（不支持 ajax）, 3:lrc文件（支持 ajax）)
+    listFolded: false, // 列表默认折叠
+    listMaxHeight: '250px', // 列表最大高度
+    audio: [ // 歌曲列表
+        {
+            name: '隠者の書庫 ダゲレオ',
+            artist: '植松伸夫',
+            url: '{{ site.baseurl }}/assets/music/隠者の書庫 ダゲレオ.mp3', // 确保路径正确!
+            cover: '{{ site.baseurl }}/assets/images/covers/music.jpg', // 封面图片路径 (可选)
+            // lrc: '{{ site.baseurl }}/assets/music/song1.lrc' // 歌词文件路径 (可选)
+        },
+        {
+            name: 'ザナラーンの黄昏',
+            artist: '植松伸夫,成田勤',
+            url: '{{ site.baseurl }}/assets/music/Twilight over Thanalan.mp3', // 确保路径正确!
+            cover: '{{ site.baseurl }}/assets/images/covers/music.jpg', // 封面图片路径 (可选)
+        }
+        // 你可以添加更多歌曲...
+        // {
+        //     name: '歌曲名',
+        //     artist: '歌手',
+        //     url: '歌曲链接.mp3',
+        //     cover: '封面链接.jpg',
+        // }
+    ]
+});
+</script>
 <!-- jQuery -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 
