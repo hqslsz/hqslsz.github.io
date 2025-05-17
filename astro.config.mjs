@@ -15,7 +15,8 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: USER_SITE,
+  site: 'https://hqslsz.github.io',
+  base: '/frosti',         //  <--- 这是最关键的修改！因为你的仓库名叫 frosti
   output: "static",
   style: {
     scss: {
