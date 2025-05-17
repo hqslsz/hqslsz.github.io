@@ -1,5 +1,5 @@
 ---
-title:从零到一：使用 Astro 主题 "Frosti" 搭建并部署 GitHub Pages 个人博客笔记
+title: 从零到一：使用 Astro 主题 "Frosti" 搭建并部署 GitHub Pages 个人博客笔记
 description: 如题，这片博文记录的是我在GitHub上fork来EveSunMaple的博客作为我的GitHubPages的过程
 pubDate: 2025-5-17 # 发表日期，注意格式，可以参考其他文章或config里的date_format
 image: /dist/view.png # 可选，文章封面图路径，图片放public/image/下
@@ -11,6 +11,7 @@ tags:
 # badge: Pin # 如果想置顶，可以加上
 draft: false # false 表示发布，true 表示草稿
 ---
+
 ## 一、 前期准备与目标
 
 - **目标：** Fork 一个 GitHub 上的 Astro 博客主题 "Frosti"，将其个性化配置，并成功部署到 GitHub Pages，最终使用 [用户名].github.io 作为博客主域名。
