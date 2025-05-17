@@ -24,7 +24,7 @@ jobs:
       - name: Setup pnpm 🔧
         uses: pnpm/action-setup@v3 # 使用最新版
         with:
-          version: 8 # 或者项目 package.json 中 engines.pnpm 指定的版本
+          version: 10 # 或者项目 package.json 中 engines.pnpm 指定的版本
 
       - name: Setup Node.js 🏗️
         uses: actions/setup-node@v4 # 使用最新版
