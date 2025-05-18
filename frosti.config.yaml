@@ -3,7 +3,7 @@ site:
   tab: Qu‘s Marsh # 浏览器标签栏上显示的文本
   title: 💠 Qu‘s Marsh # 网站的标题
   description: 人迹罕至的沼泽——无冢安身之人的归宿 # 网站的描述，用于SEO等
-  language: cn # 网站的语言，例如 "en" 是英文
+  language: en # 网站的语言，例如 "en" 是英文
   favicon: /favicon.ico # 网站的图标，用于浏览器标签栏和其他地方显示
   theme: # 更多主题 https://daisyui.com/docs/themes/
     light: winter # 主题的浅色模式
@@ -68,10 +68,10 @@ user:
   avatar: /profile.png # 用户头像路径
   sidebar: # 侧边栏配置
     social:
- #     - href: "https://afdian.com/a/saroprock" # 链接
- #       ariaLabel: Support my work # 图标的可访问性标签
- #       title: Support my work # 图标的悬浮标题
- #       svg: "ri:cup-line"
+      #     - href: "https://afdian.com/a/saroprock" # 链接
+      #       ariaLabel: Support my work # 图标的可访问性标签
+      #       title: Support my work # 图标的悬浮标题
+      #       svg: "ri:cup-line"
       - href: "https://github.com/hqslsz"
         ariaLabel: Github
         title: Github
@@ -80,16 +80,16 @@ user:
         ariaLabel: BiliBili
         title: BiliBili
         svg: "ri:bilibili-line"
-#      - href: "https://x.com/EveSunMaple"
-#        ariaLabel: X(twitter)
-#        title: X(twitter)
-#        svg: "ri:twitter-line"
+  #      - href: "https://x.com/EveSunMaple"
+  #        ariaLabel: X(twitter)
+  #        title: X(twitter)
+  #        svg: "ri:twitter-line"
   footer:
     social:
-#      - href: "https://afdian.com/a/saroprock" # 链接
-#        ariaLabel: Support my work # 图标的可访问性标签
-#        title: Support my work # 图标的悬浮标题
- #       svg: "ri:cup-line"
+      #      - href: "https://afdian.com/a/saroprock" # 链接
+      #        ariaLabel: Support my work # 图标的可访问性标签
+      #        title: Support my work # 图标的悬浮标题
+      #       svg: "ri:cup-line"
       - href: "https://github.com/hqslsz"
         ariaLabel: Github
         title: Github

@@ -41,13 +41,9 @@ draft: false # false 表示发布，true 表示草稿
 
    - 根据项目 README 推荐，全局安装 pnpm：
 
-     ```
+     ```bash
      npm i -g pnpm
      ```
-
-     content_copydownload
-
-     Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
    - 验证安装：pnpm -v (记录下版本号，如 v10.x.x，后续 Actions 配置可能需要)。
 
@@ -55,13 +51,9 @@ draft: false # false 表示发布，true 表示草稿
 
    - 在本地项目根目录下，通过终端运行：
 
-     ```
+     ```bash
      pnpm install
      ```
-
-     content_copydownload
-
-     Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
    - **遇到的问题1：pnpm approve-builds 提示**
 
@@ -73,13 +65,9 @@ draft: false # false 表示发布，true 表示草稿
 
    - 根据 README 指示，在启动开发服务器前需要先构建一次：
 
-     ```
+     ```bash
      pnpm run build
      ```
-
-     content_copydownload
-
-     Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
    - **遇到的问题2：构建脚本中 cp 命令在 Windows 下不兼容**
 
@@ -97,23 +85,15 @@ draft: false # false 表示发布，true 表示草稿
 
        3. **最终优化：** 移除该 shx cp -r dist/pagefind public/ 操作，因为 pagefind --site dist 已将索引生成到正确的 dist/pagefind/ 目录，无需复制回 public。最终 build 脚本简化为：
 
-          ```
-          "build": "astro check && astro build && pagefind --site dist",
-          ```
-
-          content_copydownload
-
-          Use code [with caution](https://support.google.com/legal/answer/13505487).Json
+     ```bash
+     "build": "astro check && astro build && pagefind --site dist",
+     ```
 
 6. **启动本地开发服务器：**
 
-   ```
+   ```bash
    pnpm run dev
    ```
-
-   content_copydownload
-
-   Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
    - 访问 http://localhost:4321 (Astro 默认端口) 预览博客初始效果。
 
@@ -150,6 +130,7 @@ draft: false # false 表示发布，true 表示草稿
 ## 四、 配置 GitHub Actions 实现自动部署 (初次尝试)
 
 1. **创建 Workflow 文件：**
+
    - 在项目根目录下创建 .github/workflows/deploy.yml 文件。
    - 粘贴提供的标准 Astro 部署到 GitHub Pages 的 Actions Workflow 代码。关键步骤包括：
      - 触发条件 (如 on: push: branches: [ main ])。
@@ -161,19 +142,20 @@ draft: false # false 表示发布，true 表示草稿
      - 配置 Pages (actions/configure-pages)。
      - 上传构建产物 (actions/upload-pages-artifact)。
      - 部署到 Pages (actions/deploy-pages)。
-   
+
 2. **提交代码到 GitHub：**
    - 使用 GitHub Desktop 将所有本地修改 (包括配置文件、新添加的 workflow 文件等) 提交 (Commit) 并推送 (Push) 到远程 Frosti 仓库的 main 分支。
-   
 3. **遇到的问题3：Actions 中 pnpm install 报错 ERR_PNPM_INVALID_WORKSPACE_CONFIGURATION**
+
    - **现象：** "Install dependencies" 步骤失败，提示 packages field missing or empty。
    - **原因：** 项目中存在 pnpm-workspace.yaml 文件，但其内容 (onlyBuiltDependencies: ...) 不符合 pnpm workspace 对 packages 字段的要求。
    - **解决：**
      1. 将 pnpm-workspace.yaml 中的 onlyBuiltDependencies 配置移至 package.json 文件内的 pnpm 字段下。
      2. 删除项目根目录下的 pnpm-workspace.yaml 文件。
      3. 提交并推送这些更改。
-   
+
 4. **遇到的问题4：Actions 中 pnpm install 报错 ERR_PNPM_NO_LOCKFILE**
+
    - **现象：** "Install dependencies" 步骤失败，提示 Cannot install with "frozen-lockfile" because pnpm-lock.yaml is absent 或 Ignoring not compatible lockfile。
    - **原因分析：**
      - pnpm-lock.yaml 文件未被正确提交到远程仓库。
@@ -183,91 +165,89 @@ draft: false # false 表示发布，true 表示草稿
      2. **在本地重新运行 pnpm install 确保 pnpm-lock.yaml 是最新的，并提交推送到远程仓库。**
      3. **统一 CI 环境与本地的 pnpm 版本。** 查看本地 pnpm -v (例如为 v10.x.x)，修改 .github/workflows/deploy.yml 中 pnpm/action-setup 的 version 参数为匹配的主版本 (如 version: 10)。
      4. 提交并推送 deploy.yml 的修改。
-   
+
 5. **遇到的问题5：Actions 中 "Setup Pages" 步骤报错 Get Pages site failed**
+
    - **现象：** actions/configure-pages@v4 步骤失败，提示 Please verify that the repository has Pages enabled and configured to build using GitHub Actions。
    - **原因：** GitHub 仓库的 "Settings" -> "Pages" 中尚未将部署源 (Source) 配置为 "GitHub Actions"。
    - **解决：**
      1. 进入 Frosti 仓库的 "Settings" -> "Pages"。
      2. 在 "Build and deployment" 部分，将 "Source" 修改为 "GitHub Actions"。
      3. 手动重新运行失败的 Actions workflow。
-   
+
 6. **部署成功，但 CSS 样式丢失：**
+
    - **现象：** 访问 https://[用户名].github.io/Frosti/，页面内容显示但无样式。
    - **原因：** astro.config.ts 中的 base: '/Frosti' 配置可能存在大小写问题或未正确生效。
    - **排查：**
      1. 浏览器查看网页源代码，检查 CSS 文件的 href 路径是否包含了正确的 /Frosti/ 前缀，并且大小写与仓库名 Frosti 一致。
      2. 确认 astro.config.ts 中 base: '/Frosti' (首字母大写F) 配置无误。
    - **解决：** 确保 base 配置的大小写与仓库名完全匹配后，重新提交并等待 Actions 部署。
-   
+
    ## 五、 首次部署成功与样式问题修复 (回顾与确认)
-   
+
    经过一系列的配置调整和问题排查 (详见上半部分)，博客最终成功部署到了 https://[你的用户名].github.io/Frosti/。
-   
+
    - **关键配置回顾：**
      - frosti.config.yaml 中 user.site 设置为 https://[你的用户名].github.io。
      - astro.config.ts 中 site 来源于 USER_SITE (间接来自 frosti.config.yaml)，base 设置为 '/Frosti' (注意大小写与仓库名 Frosti 一致)。
      - GitHub Actions workflow (.github/workflows/deploy.yml) 配置正确，pnpm 版本与本地基本一致。
      - GitHub 仓库 "Settings" -> "Pages" 的 "Source" 设置为 "GitHub Actions"。
    - **CSS 样式丢失问题的最终解决：** 确认 astro.config.ts 中的 base: '/Frosti' 的大小写与仓库名 Frosti 完全匹配，确保了 CSS 等静态资源路径的正确性。
-   
+
    此时，博客在子路径下已可正常访问，所有功能 (包括 Pagefind 搜索) 均按预期工作。
-   
+
    ## 六、 迁移博客到根域名 [用户名].github.io
-   
+
    为了使博客 URL 更简洁、更具代表性 (作为个人主站点)，决定将其从 /[仓库名]/ 子路径迁移到根域名 https://[用户名].github.io/。
-   
+
    1. **在 GitHub 上修改仓库名称：**
-   
+
       - 进入原 Frosti 仓库的 GitHub 页面。
       - 导航到 "Settings" -> "General"。
       - 将 "Repository name" 从 Frosti 修改为 [你的用户名].github.io (例如 hqslsz.github.io)。
       - 确认重命名。
-   
+
    2. **修改 Astro 配置文件 (astro.config.ts) 以适应根路径部署：**
-   
+
       - 在本地项目中，打开 astro.config.ts (或 .mjs) 文件。
       - **核心修改：** 将 base 选项的值从原来的 '/Frosti' 修改为 '/'。或者，由于 Astro 默认的 base 即为 '/'，也可以直接删除 base 这一行配置。
       - site 选项的值 (来源于 frosti.config.yaml 中的 user.site) 应保持为 https://[你的用户名].github.io，无需改动。
-   
+
       修改后的 astro.config.ts 示例 (关键部分)：
-   
-      ```
+
+      ```typescript
       // astro.config.ts
       export default defineConfig({
-        site: 'https://[你的用户名].github.io', // 保持不变
-        base: '/',                             //  <--- 修改为根路径
+        site: "https://[你的用户名].github.io", // 保持不变
+        base: "/", //  <--- 修改为根路径
         // ... 其他配置 ...
       });
       ```
-   
-      content_copydownload
-   
-      Use code [with caution](https://support.google.com/legal/answer/13505487).TypeScript
-   
+
    3. **更新本地 Git 仓库的远程跟踪地址 (可选，GitHub Desktop 通常会自动处理)：**
-   
+
       - 如果使用命令行，可以运行 git remote set-url origin https://github.com/[你的用户名]/[你的用户名].github.io.git。
-   
+
    4. **提交并推送配置更改：**
-   
+
       - 使用 GitHub Desktop，将对 astro.config.ts 的修改提交。
       - 提交信息可为：Update base path for root domain deployment 或 Configure for [用户名].github.io deployment。
       - 将提交推送到远程仓库 (此时远程仓库名已是 [你的用户名].github.io)。
-   
+
    5. **GitHub Actions 自动重新部署：**
-   
+
       - 代码推送到新的仓库名后，GitHub Actions 会自动使用相同的 workflow (.github/workflows/deploy.yml) 进行构建和部署。
       - 监控新仓库 ([你的用户名].github.io) "Actions" 标签页的 workflow 运行状态。
-   
+
    6. **验证 GitHub Pages 设置 (通常无需更改)：**
-   
+
       - 进入新仓库 ([你的用户名].github.io) 的 "Settings" -> "Pages"。
       - "Source" 应依然是 "GitHub Actions"。
       - 由于仓库名符合 [用户名].github.io 格式，GitHub Pages 会自动将其识别为用户/组织站点，并从根路径提供服务。
-   
+
    ## 七、 访问新的博客主页与最终确认
-   
+
    1. **等待 GitHub Actions 成功完成部署。** (可能需要几分钟)
    2. **新的博客访问地址为：https://[你的用户名].github.io/**
    3. **重要：** 清除浏览器缓存并强制刷新页面 (Ctrl+Shift+R 或 Cmd+Shift+R)，或使用隐身/无痕模式访问，以确保看到的是最新部署的内容和样式。
@@ -277,11 +257,11 @@ draft: false # false 表示发布，true 表示草稿
       - 测试亮色/暗色模式切换。
       - 检查所有内部链接和外部链接是否按预期工作。
       - 检查 RSS feed 是否能正确生成和访问。
-   
+
    至此，个人博客已成功迁移到 [你的用户名].github.io 根域名下，并可稳定访问。
-   
+
    ## 八、 总结与后续
-   
+
    - **遇到的主要挑战及学习点：**
      - 理解 pnpm 的依赖管理和构建脚本审批机制。
      - 处理 package.json 脚本中的跨平台兼容性问题 (如 cp 命令)。

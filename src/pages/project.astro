@@ -4,13 +4,14 @@ import { Icon } from "astro-icon/components";
 import MainCard from "@/components/MainCard.astro";
 import GitHubStats from "@/components/mdx/GitHubStats.astro";
 import RepositoryCard from "@/components/mdx/RepositoryCard.astro";
+import PostCard from "@/components/PostCard.astro";
 ---
 
 <BaseLayout title="Projects">
   <MainCard
     title="Projects"
     description="A showcase of my open-source projects and contributions on GitHub."
-    textOverlay="PROJECTS"
+    image="/img/projects-bg.jpg"
     infoIcon="lucide:code-2"
   >
     <!-- Featured Projects -->
@@ -20,10 +21,10 @@ import RepositoryCard from "@/components/mdx/RepositoryCard.astro";
         <span>Featured Projects</span>
       </h2>
 
-      <GitHubStats username="EveSunMaple" repositoryName="Frosti" showLanguages={true} showContributors={true} />
+      <GitHubStats username="torvalds" repositoryName="linux" showLanguages={true} showContributors={true} />
     </section>
 
-    <!-- My Repositories -->
+    <!-- My Repositories
     <section class="py-4">
       <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
         <Icon name="lucide:folder" class="w-6 h-6 text-primary" />
@@ -37,71 +38,74 @@ import RepositoryCard from "@/components/mdx/RepositoryCard.astro";
         <RepositoryCard repo="EveSunMaple/Word-testing-application" />
         <RepositoryCard repo="EveSunMaple/Smooth-Snake-Game" />
         <RepositoryCard repo="EveSunMaple/InfinitySky" />
+        <RepositoryCard repo="EveSunMaple/astro-blog" />
+        <RepositoryCard repo="EveSunMaple/astro-blog-theme" />
+        <RepositoryCard repo="EveSunMaple/astro-blog-theme-docs" />
+        <PostCard title="GIT" image="/img/svgs/multisim.svg" url="https://blog.eimoon.com/reference/docs/git" />
       </div>
-
-      <div class="flex justify-center mt-10">
-        <a
-          href="https://github.com/EveSunMaple?tab=repositories"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-outline gap-2"
-        >
-          <Icon name="lucide:github" class="w-5 h-5" />
-          <span>View More on GitHub</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Open Source Contributions -->
-    <section class="py-4">
-      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-        <Icon name="lucide:git-pull-request" class="w-6 h-6 text-primary" />
-        <span>Open Source Contributions</span>
-      </h2>
-
-      <div class="card bg-base-200 p-6">
-        <ul class="space-y-6">
-          {
-            [
-              {
-                project: "Astro",
-                description: "Contributed to performance improvements and bug fixes",
-                url: "https://github.com/withastro/astro",
-              },
-              {
-                project: "TailwindCSS",
-                description: "Added new utility classes and documentation improvements",
-                url: "https://github.com/tailwindlabs/tailwindcss",
-              },
-              {
-                project: "DaisyUI",
-                description: "Contributed component enhancements and theme improvements",
-                url: "https://github.com/saadeghi/daisyui",
-              },
-            ].map((contrib) => (
-              <li class="flex items-start gap-4">
-                <div class="flex-shrink-0 bg-base-300 p-2 rounded-full">
-                  <Icon name="lucide:git-commit" class="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold">
-                    <a
-                      href={contrib.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="hover:text-primary transition-colors flex items-center gap-1"
-                    >
-                      {contrib.project}
-                      <Icon name="lucide:external-link" class="w-4 h-4" />
-                    </a>
-                  </h3>
-                  <p class="text-base-content/80">{contrib.description}</p>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
+-->
+    <div class="flex justify-center mt-10">
+      <a
+        href="https://github.com/hqslsz?tab=repositories"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline gap-2"
+      >
+        <Icon name="lucide:github" class="w-5 h-5" />
+        <span>View More on GitHub</span>
+      </a>
+    </div>
   </MainCard>
+
+  <!-- Open Source Contributions -->
+  <section class="py-4">
+    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+      <Icon name="lucide:git-pull-request" class="w-6 h-6 text-primary" />
+      <span>Open Source Contributions</span>
+    </h2>
+
+    <div class="card bg-base-200 p-6">
+      <ul class="space-y-6">
+        {
+          [
+            {
+              project: "Astro",
+              description: "Contributed to performance improvements and bug fixes",
+              url: "https://github.com/withastro/astro",
+            },
+            {
+              project: "TailwindCSS",
+              description: "Added new utility classes and documentation improvements",
+              url: "https://github.com/tailwindlabs/tailwindcss",
+            },
+            {
+              project: "DaisyUI",
+              description: "Contributed component enhancements and theme improvements",
+              url: "https://github.com/saadeghi/daisyui",
+            },
+          ].map((contrib) => (
+            <li class="flex items-start gap-4">
+              <div class="flex-shrink-0 bg-base-300 p-2 rounded-full">
+                <Icon name="lucide:git-commit" class="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold">
+                  <a
+                    href={contrib.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-primary transition-colors flex items-center gap-1"
+                  >
+                    {contrib.project}
+                    <Icon name="lucide:external-link" class="w-4 h-4" />
+                  </a>
+                </h3>
+                <p class="text-base-content/80">{contrib.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 </BaseLayout>

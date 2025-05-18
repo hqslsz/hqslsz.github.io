@@ -8,9 +8,9 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
 
 <BaseLayout title="Home">
   <MainCard
-    title="Welcome to Frosti"
-    description="A modern, responsive, feature-rich blog theme for Astro with dark/light mode and customizable options."
-    textOverlay="HOME"
+    title="Welcome to Qu‘s Marsh"
+    description="这里有一只🐸，你抓到了它，想要更多🐸么？在我的博文里寻找吧~"
+    image="/img/river.png"
     infoIcon="lucide:info"
   >
     <div class="space-y-8">
@@ -20,20 +20,19 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
           <h1
             class="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-loose"
           >
-            🌟 Frosti Blog Theme
+            🐸 Qu’s Marsh
           </h1>
           <p class="text-xl text-base-content/80 max-w-3xl mb-8">
-            A minimal, responsive, and feature-rich Astro blog theme designed for creators who value beautiful content
-            presentation and exceptional performance.
+            人迹罕至的沼泽——无冢安身之人的归宿。你可能去过各地的ク族の沼，这里是互联网大陆的ク族の沼。我，现役准勇者2317号席位，是这里的主人
           </p>
           <div class="flex flex-wrap gap-4 justify-center">
             <a href="/blog" class="btn btn-primary gap-2 btn-shine-effect">
               <Icon name="lucide:book-open" class="w-5 h-5" />
-              <span>Explore Blog</span>
+              <span>寻找青蛙🐸</span>
             </a>
-            <a href="https://github.com/EveSunMaple/Frosti" target="_blank" class="btn btn-outline gap-2">
+            <a href="https://github.com/hqslsz" target="_blank" class="btn btn-outline gap-2">
               <Icon name="lucide:github" class="w-5 h-5" />
-              <span>Star on GitHub</span>
+              <span>我的GitHub</span>
             </a>
           </div>
         </div>
@@ -43,48 +42,48 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
       <section class="py-6">
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
           <Icon name="lucide:sparkles" class="w-6 h-6 text-primary" />
-          <span>Features</span>
+          <span>博客讨论内容</span>
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <FeatureCard
-            title="Responsive Design"
-            description="Fully responsive design that looks great on all devices from mobile to desktop."
-            icon="lucide:smartphone"
+            title="数字媒体类"
+            description="3D建模，动画相关的一切内容"
+            icon="simple-icons:blender"
             color="oklch(0.7 0.2 30)"
           />
 
           <FeatureCard
-            title="Dark/Light Mode"
-            description="Toggle between light and dark themes with a beautiful transition effect."
-            icon="lucide:moon"
+            title="游戏相关"
+            description="游戏引擎，游戏设计，游戏开发等"
+            icon="simple-icons:republicofgamers"
             color="oklch(0.65 0.2 280)"
           />
 
           <FeatureCard
-            title="MDX Support"
-            description="Write your content in MDX with full support for React components and JSX."
-            icon="lucide:file-code"
+            title="电路"
+            description="专业对口，电路相关的一切，尤其是电力系统等强电方向的一切"
+            icon="simple-icons:multisim"
             color="oklch(0.6 0.2 160)"
           />
 
           <FeatureCard
-            title="SEO Optimized"
-            description="Built-in SEO optimization with meta tags, OpenGraph, and JSON-LD."
-            icon="lucide:search"
+            title="计算机类"
+            description="编程语言，操作系统，网络安全等"
+            icon="simple-icons:archlinux"
             color="oklch(0.6 0.2 200)"
           />
 
           <FeatureCard
-            title="Fast Performance"
-            description="Optimized for speed with lazy loading, code splitting, and minimal JavaScript."
-            icon="lucide:zap"
+            title="数理基础类"
+            description="没有人不为数理基础着迷，为神之一笔的证明沸腾"
+            icon="simple-icons:comsol"
             color="oklch(0.8 0.2 80)"
           />
 
           <FeatureCard
-            title="Customizable"
-            description="Easily customize the theme to match your personal brand and preferences."
+            title="随便写点东西"
+            description="日常所思所感"
             icon="lucide:palette"
             color="oklch(0.7 0.2 10)"
           />
@@ -92,6 +91,7 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
       </section>
 
       <!-- Quick Start -->
+      <!--
       <section class="py-6">
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
           <Icon name="lucide:rocket" class="w-6 h-6 text-primary" />
@@ -167,12 +167,12 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
           </div>
         </div>
       </section>
-
+-->
       <!-- GitHub Stats -->
       <section class="py-6">
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
           <Icon name="lucide:github" class="w-6 h-6 text-primary" />
-          <span>Repository Stats</span>
+          <span>主题的GitHub仓库</span>
         </h2>
 
         <GitHubStats username="EveSunMaple" repositoryName="Frosti" showLanguages={true} showContributors={true} />
