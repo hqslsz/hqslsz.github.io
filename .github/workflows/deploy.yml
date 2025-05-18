@@ -29,8 +29,8 @@ jobs:
       - name: Setup Node.js 🏗️
         uses: actions/setup-node@v4 # 使用最新版
         with:
-          node-version: '18' # 或者项目 package.json 中 engines.node 指定的版本
-          cache: 'pnpm'
+          node-version: "18" # 或者项目 package.json 中 engines.node 指定的版本
+          cache: pnpm
 
       - name: Install dependencies 👨‍💻
         run: pnpm install --frozen-lockfile # 使用 frozen-lockfile 更安全
