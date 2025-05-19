@@ -2,7 +2,7 @@
 title: Markdown数学公式语法
 description: 🐸
 pubDate: 2025-4-25 # 发表日期，注意格式，可以参考其他文章或config里的date_format
-image: /view.png # 可选，文章封面图路径，图片放public/image/下
+image: /img/404-bg.jpg # 可选，文章封面图路径，图片放public/image/下
 categories:
   - tech
 tags:
