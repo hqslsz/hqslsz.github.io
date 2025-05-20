@@ -2,7 +2,7 @@
 title: 在 Termux 中安装 Arch Linux 并配置 Neovim (LazyVim)
 description: 🐸
 pubDate: 2025-5-2 # 发表日期，注意格式，可以参考其他文章或config里的date_format
-image: /view.png # 可选，文章封面图路径，图片放public/image/下
+image: /img/projects-bg.jpg # 可选，文章封面图路径，图片放public/image/下
 categories:
   - tech
 tags:

@@ -2,7 +2,7 @@
 title: 巨型垃圾堆，来自古代人的遗产
 description: 🐸
 pubDate: 2020-4-25 # 发表日期，注意格式，可以参考其他文章或config里的date_format
-image: /view.png # 可选，文章封面图路径，图片放public/image/下
+image: /img/amwlt.png # 可选，文章封面图路径，图片放public/image/下
 categories:
   - life
 tags:
