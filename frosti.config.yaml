@@ -45,9 +45,9 @@ site:
           svg: "material-symbols:earthquake-rounded"
           target: _self
         # 子菜单项配置
-    - id: project
-      text: Project
-      href: /project
+    - id: Blue Magic Spellbook
+      text: Blue Magic Spellbook
+      href: /bluemage
       svg: "material-symbols:code-blocks-outline"
       target: _self
     - id: friend

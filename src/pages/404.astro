@@ -5,12 +5,11 @@ import { Icon } from "astro-icon/components";
 import MainCard from "@/components/MainCard.astro";
 ---
 
-<BaseLayout title="404">
+<BaseLayout title="404，出错了~">
   <MainCard
-    title={t("label.404title") || "Page Not Found"}
-    description={t("label.404description") ||
-      "Looks like you've ventured into the unknown. The page you're looking for doesn't exist or has been moved to another dimension."}
-    textOverlay="404"
+    title={t("label.404title") || "未知の领域，亦或是昔日の天堂"}
+    description={t("label.404description") || "一只🐸眺望着远方，是返航还是在此停驻？"}
+    image="/img/404-bg.jpg"
     infoIcon="lucide:help-circle"
   >
     <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">

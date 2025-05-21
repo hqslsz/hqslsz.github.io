@@ -7,10 +7,10 @@ import RepositoryCard from "@/components/mdx/RepositoryCard.astro";
 import PostCard from "@/components/PostCard.astro";
 ---
 
-<BaseLayout title="Projects">
+<BaseLayout title="青魔法书">
   <MainCard
-    title="Projects"
-    description="A showcase of my open-source projects and contributions on GitHub."
+    title="青魔法书"
+    description="Qu族青魔法师靠吃掉怪物的方式学习它的技能，这是伟大的青魔Quasi2317习得的青魔法，在此编写成册。供各位青魔参考"
     image="/img/projects-bg.jpg"
     infoIcon="lucide:code-2"
   >
@@ -18,10 +18,90 @@ import PostCard from "@/components/PostCard.astro";
     <section class="py-4">
       <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
         <Icon name="lucide:star" class="w-6 h-6 text-primary" />
-        <span>Featured Projects</span>
+        <span>linux</span>
       </h2>
 
       <GitHubStats username="torvalds" repositoryName="linux" showLanguages={true} showContributors={true} />
+    </section>
+
+    <!-- Tech Stack -->
+    <section>
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <Icon name="lucide:code-2" class="w-6 h-6 text-primary" />
+        <span>技术栈</span>
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {
+          [
+            { name: "Astro", icon: "simple-icons:astro", color: "oklch(0.5 0.2 300)", url: "https://astro.build/" },
+            {
+              name: "JavaScript",
+              icon: "simple-icons:javascript",
+              color: "oklch(0.8 0.2 80)",
+              url: "https://developer.mozilla.org/docs/Web/JavaScript",
+            },
+            {
+              name: "TypeScript",
+              icon: "simple-icons:typescript",
+              color: "oklch(0.6 0.2 250)",
+              url: "https://www.typescriptlang.org/",
+            },
+            { name: "React", icon: "simple-icons:react", color: "oklch(0.7 0.2 200)", url: "https://react.dev/" },
+            {
+              name: "Node.js",
+              icon: "simple-icons:nodedotjs",
+              color: "oklch(0.7 0.2 140)",
+              url: "https://nodejs.org/",
+            },
+            {
+              name: "TailwindCSS",
+              icon: "simple-icons:tailwindcss",
+              color: "oklch(0.6 0.2 220)",
+              url: "https://tailwindcss.com/",
+            },
+            {
+              name: "HTML5",
+              icon: "simple-icons:html5",
+              color: "oklch(0.7 0.2 30)",
+              url: "https://developer.mozilla.org/docs/Web/HTML",
+            },
+            {
+              name: "CSS3",
+              icon: "simple-icons:css3",
+              color: "oklch(0.7 0.2 220)",
+              url: "https://developer.mozilla.org/docs/Web/CSS",
+            },
+            { name: "Git", icon: "simple-icons:git", color: "oklch(0.7 0.2 30)", url: "https://git-scm.com/" },
+            { name: "C++", icon: "simple-icons:cplusplus", color: "oklch(0.6 0.2 240)", url: "https://isocpp.org/" },
+            {
+              name: "C#",
+              icon: "simple-icons:csharp",
+              color: "oklch(0.6 0.2 160)",
+              url: "https://learn.microsoft.com/dotnet/csharp/",
+            },
+            {
+              name: "Python",
+              icon: "simple-icons:python",
+              color: "oklch(0.7 0.2 250)",
+              url: "https://www.python.org/",
+            },
+          ].map((tech) => (
+            <a
+              href={tech.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-base-300 transition-colors"
+              title={tech.name}
+            >
+              <div class="text-3xl mb-2" style={`color: ${tech.color}`}>
+                <Icon name={tech.icon} class="w-10 h-10" />
+              </div>
+              <span class="text-sm font-medium">{tech.name}</span>
+            </a>
+          ))
+        }
+      </div>
     </section>
 
     <!-- My Repositories
@@ -57,7 +137,7 @@ import PostCard from "@/components/PostCard.astro";
     </div>
   </MainCard>
 
-  <!-- Open Source Contributions -->
+  <!-- Open Source Contributions
   <section class="py-4">
     <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
       <Icon name="lucide:git-pull-request" class="w-6 h-6 text-primary" />
@@ -109,3 +189,4 @@ import PostCard from "@/components/PostCard.astro";
     </div>
   </section>
 </BaseLayout>
+-->

@@ -18,6 +18,7 @@ html {
   @apply scroll-smooth;
 }
 
+
 kbd {
   @apply kbd;
 }
@@ -33,7 +34,12 @@ code {
     display: none; /* Chrome, Safari and Opera */
   }
 }
-
+html, body {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+}
+.prose {
+  @apply text-base-content/70; // 0.8 表示 80% 不透明度
+}
 .frosti-heading {
   @apply text-2xl leading-normal pt-0 font-bold text-base-content bg-clip-text bg-gradient-to-r from-primary to-secondary duration-300 hover:text-transparent;
 }
