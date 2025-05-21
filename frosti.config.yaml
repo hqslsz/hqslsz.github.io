@@ -19,12 +19,12 @@ site:
       svg: "material-symbols:home-outline-rounded"
       target: _self
     - id: about
-      text: About
+      text: 关于
       href: /about
       svg: "material-symbols:info-outline-rounded"
       target: _self
     - id: blog
-      text: Blogs
+      text: 青蛙抓抓乐
       href: /blog
       svg: "material-symbols:book-2-outline-rounded"
       target: _self
@@ -51,12 +51,12 @@ site:
       svg: "material-symbols:code-blocks-outline"
       target: _self
     - id: friend
-      text: Friend
+      text: 友链
       href: /friend
       svg: "material-symbols:supervisor-account-outline-rounded"
       target: _self
     - id: contact
-      text: Contact
+      text: 邮箱联系
       href: "mailto:contact.wlrh_lishuzeWR@outlook.com"
       target: _blank # 在新标签页打开
       svg: "material-symbols:attach-email-outline-rounded"
