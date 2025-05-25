@@ -12,6 +12,9 @@ draft: false # false 表示发布，true 表示草稿
 ---
 
 我的时间浪费了~
+
 破微软，等着被收购吧！
-真想不到word也要随时保存
+
+真想不到word也要随时保存！！
+
 ![HEHE](/img/posts/word-error.png)
