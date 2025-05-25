@@ -2,7 +2,7 @@
 title: Fuck u microsoft
 description: 垃圾
 pubDate: 2025-5-23 # 发表日期，注意格式，可以参考其他文章或config里的date_format
-image: /img/posts/word-error.png # 可选，文章封面图路径，图片放public/image/下
+image: /microsoft.jpg # 可选，文章封面图路径，图片放public/image/下
 categories:
   - life
 tags:

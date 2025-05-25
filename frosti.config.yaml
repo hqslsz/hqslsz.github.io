@@ -30,17 +30,17 @@ site:
       target: _self
       subItems:
         - id: all
-          text: All blogs
+          text: 小船儿轻轻飘荡在水中
           href: /blog
           svg: "material-symbols:ink-pen-outline-rounded"
           target: _self
         - id: tech
-          text: Tech blogs
+          text: 荡起双桨
           href: /blog/category/tech
           svg: "material-symbols:deployed-code-outline"
           target: _self
         - id: life
-          text: Life blogs
+          text: 推开波浪
           href: /blog/category/life
           svg: "material-symbols:earthquake-rounded"
           target: _self
