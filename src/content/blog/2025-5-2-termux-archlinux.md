@@ -1,6 +1,6 @@
 ---
 title: 在 Termux 中安装 Arch Linux 并配置 Neovim (LazyVim)
-description: 🐸
+description: 平板秒变轻薄本~妈妈再也不用担心我扛着5公斤笔记本一去不复返了
 pubDate: 2025-5-2 # 发表日期，注意格式，可以参考其他文章或config里的date_format
 image: /img/projects-bg.jpg # 可选，文章封面图路径，图片放public/image/下
 categories:
@@ -90,8 +90,6 @@ draft: false # false 表示发布，true 表示草稿
     proot-distro login archlinux
     ```
 
-    命令提示符发生了变成为`[root@localhost ~]#`，表示你现在正以 root 用户身份在 Arch Linux 环境中操作。
-
 2.  **更新 Arch Linux 包数据库和系统:**
 
     ```bash
@@ -110,11 +108,6 @@ draft: false # false 表示发布，true 表示草稿
     useradd -m -g users -G wheel -s /bin/bash <your_username>
     ```
 
-    - `-m`: 创建用户家目录 (`/home/<your_username>`)
-    - `-g users`: 设置主用户组为 `users`
-    - `-G wheel`: 将用户添加到 `wheel` 附加组（通常用于 `sudo` 权限）
-    - `-s /bin/bash`: 设置默认 shell 为 Bash
-
 5.  **设置用户密码:**
     为新创建的用户设置密码
 
@@ -122,28 +115,21 @@ draft: false # false 表示发布，true 表示草稿
     passwd <your_username>
     ```
 
-    按照提示输入并确认密码。
-
 6.  **配置 `sudo`:**
-    允许 `wheel` 组的成员使用 `sudo` 执行命令。推荐使用 `visudo` 命令编辑 `/etc/sudoers` 文件，因为它会在保存前检查语法错误。
 
     ```bash
     visudo
     ```
 
-    在打开的编辑器 (默认为 vi/vim) 中，找到下面这行：
-
     ```
     # %wheel ALL=(ALL:ALL) ALL
     ```
 
-    去掉行首的 `#` 号，取消注释：
+    取消注释：
 
     ```
     %wheel ALL=(ALL:ALL) ALL
     ```
-
-    保存并退出编辑器（在 vim 中是按 `Esc`，然后输入 `:wq` 并按 `Enter`）。
 
 7.  **切换到新用户:**
 
@@ -151,11 +137,7 @@ draft: false # false 表示发布，true 表示草稿
     su - <your_username>
     ```
 
-    提示符应该会变成类似 `[<your_username>@localhost ~]$` 的形式。
-
 ## 0x04：安装 Neovim 和相关依赖
-
-以你的普通用户身份 (或使用 `sudo`) 安装 Neovim 及其运行 LazyVim 所需的依赖。
 
 1.  **安装 Neovim:**
 
@@ -164,14 +146,12 @@ draft: false # false 表示发布，true 表示草稿
     ```
 
 2.  **安装 LazyVim 依赖:**
-    LazyVim 需要 `git` 来管理插件，`base-devel` 包含编译工具（一些插件可能需要编译），`ripgrep` 和 `fd` 用于快速搜索，`xsel` 或 `wl-clipboard` 用于剪贴板支持（`xsel` 通常在 X11 环境下使用，但在 Termux proot 中有时也能工作）。
+
     ```bash
     sudo pacman -S git base-devel ripgrep fd xsel --noconfirm
     ```
 
 ## 0x05：安装 LazyVim
-
-LazyVim 是一个流行的 Neovim 配置框架，可以快速搭建一个功能丰富的开发环境。
 
 1.  **备份现有 Neovim 配置 (如果存在):**
 
@@ -183,8 +163,6 @@ LazyVim 是一个流行的 Neovim 配置框架，可以快速搭建一个功能�
     mv ~/.cache/nvim{,.bak}       # 备份旧的 nvim 缓存 (如果存在)
     ```
 
-    _注意：如果这些目录不存在，命令会报错，可以忽略。_
-
 2.  **克隆 LazyVim Starter 模板:**
 
     ```bash
@@ -192,7 +170,6 @@ LazyVim 是一个流行的 Neovim 配置框架，可以快速搭建一个功能�
     ```
 
 3.  **移除 .git 目录:**
-    如果你想将此配置作为自己的独立配置进行管理，而不是跟踪 LazyVim starter 的更新，可以删除 `.git` 目录。
 
     ```bash
     rm -rf ~/.config/nvim/.git
@@ -204,8 +181,6 @@ LazyVim 是一个流行的 Neovim 配置框架，可以快速搭建一个功能�
 
 ## 0x07：启动 Neovim
 
-现在一切准备就绪，可以启动 Neovim 了！
-
 1. **启动 Neovim:**
    在 Arch Linux 环境中 (以你的普通用户身份)，运行：
 
@@ -213,10 +188,7 @@ LazyVim 是一个流行的 Neovim 配置框架，可以快速搭建一个功能�
    nvim
    ```
 
-2. **首次启动:**
-   LazyVim 会自动开始下载和安装配置中定义的插件。这个过程需要一些时间，请耐心等待完成。
-
 ## 0x08 结语
 
-OK了，后面需要什么配什么就OK，我第一次尝试用Pad coding，还挺爽的，主要轻便续航久，感觉当个轻薄本用也问题不大。附一张codeforces水赛图。
+OK了，后面需要什么配什么就OK，我第一次尝试用Pad coding，还挺爽的，主要轻便续航久，感觉当个轻薄本用也问题不大。
 ![7f7a115eef626080fa00733046bef3e2](/img/posts/7f7a115eef626080fa00733046bef3e2.jpg)
