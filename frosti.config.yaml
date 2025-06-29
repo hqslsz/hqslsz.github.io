@@ -1,7 +1,7 @@
 # 网站的基本信息
 site:
-  tab: Qu‘s Marsh # 浏览器标签栏上显示的文本
-  title: 💠 Qu‘s Marsh # 网站的标题
+  tab: 枯族之沼 # 浏览器标签栏上显示的文本
+  title: 🐸 Qu‘s Marsh # 网站的标题
   description: 人迹罕至的沼泽——无冢安身之人的归宿 # 网站的描述，用于SEO等
   language: en # 网站的语言，例如 "en" 是英文
   favicon: /favicon.ico # 网站的图标，用于浏览器标签栏和其他地方显示
@@ -14,7 +14,7 @@ site:
     pageSize: 8 # 每页显示的文章数量
   menu: # 菜单配置
     - id: home # 菜单项的唯一标识符
-      text: Qu's Marsh # 菜单项显示的文本
+      text: 枯族之沼 # 菜单项显示的文本
       href: / # 菜单项链接的地址
       svg: "material-symbols:home-outline-rounded"
       target: _self
@@ -24,13 +24,13 @@ site:
       svg: "material-symbols:info-outline-rounded"
       target: _self
     - id: blog
-      text: 青蛙抓抓乐
+      text: 小船儿
       href: /blog
       svg: "material-symbols:book-2-outline-rounded"
       target: _self
       subItems:
         - id: all
-          text: 小船儿轻轻飘荡在水中
+          text: 轻轻飘荡在水中
           href: /blog
           svg: "material-symbols:ink-pen-outline-rounded"
           target: _self
