@@ -15,7 +15,7 @@ const { pdfUrl } = Astro.props;
 <div class="pdf-scroll-container" data-url={pdfUrl}>
   <div class="pdf-viewer"></div>
   <div class="pdf-controls">
-    <a href={pdfUrl} download class="download-button">
+    <a href={pdfUrl} download class="download-button" aria-label="下载 PDF">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -38,22 +38,25 @@ const { pdfUrl } = Astro.props;
 </div>
 
 <style>
-  /* :root 定义了 CSS 变量，方便快速自定义颜色 */
   :root {
-    --btn-bg: #007bff; /* 按钮背景色 */
-    --btn-text-color: #ffffff; /* 按钮文字颜色 */
-    --btn-bg-hover: #0056b3; /* 鼠标悬停时的背景色 */
+    --btn-bg: #007bff;
+    --btn-text-color: #ffffff;
+    --btn-bg-hover: #0056b3;
   }
 
-  /* PDF 页面容器的样式 */
+  .pdf-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
   .pdf-viewer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem; /* PDF 页面之间的间距 */
+    gap: 1rem;
+    width: 100%;
   }
 
-  /* 通过 :global() 为动态生成的 canvas 元素应用样式 */
   .pdf-viewer :global(canvas) {
     max-width: 100%;
     height: auto;
@@ -61,13 +64,11 @@ const { pdfUrl } = Astro.props;
     border: 1px solid #eee;
   }
 
-  /* 控制区域的样式 */
   .pdf-controls {
     margin-top: 1.5rem;
     text-align: center;
   }
 
-  /* 下载按钮的样式 */
   .download-button {
     display: inline-flex;
     align-items: center;
@@ -107,7 +108,6 @@ const { pdfUrl } = Astro.props;
 <script type="module">
   import * as pdfjsLib from "https://mozilla.github.io/pdf.js/build/pdf.mjs";
 
-  // 指定 PDF.js 的 worker 脚本路径
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://mozilla.github.io/pdf.js/build/pdf.worker.mjs`;
 
   /**
@@ -115,11 +115,9 @@ const { pdfUrl } = Astro.props;
    * @param {HTMLElement} container - 组件的顶层容器元素。
    */
   async function renderPdfInstance(container) {
-    // 从容器内部查找其专属的 .pdf-viewer 元素
     const viewer = container.querySelector(".pdf-viewer");
     if (!viewer) return;
 
-    // 防止因页面导航被重复初始化
     if (container.dataset.initialized === "true") return;
     container.dataset.initialized = "true";
 
@@ -133,45 +131,37 @@ const { pdfUrl } = Astro.props;
         console.warn("PDF viewer container has no width, PDF might not render correctly.");
         return;
       }
-
       const pdfDoc = await pdfjsLib.getDocument(url).promise;
-
-      // 遍历并渲染 PDF 的每一页
+      // 并发渲染所有页面
+      const renderTasks = [];
       for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-        const page = await pdfDoc.getPage(pageNum);
+        renderTasks.push(
+          (async () => {
+            const page = await pdfDoc.getPage(pageNum);
+            const viewportUnscaled = page.getViewport({ scale: 1 });
+            const scale = containerWidth / viewportUnscaled.width;
+            const viewport = page.getViewport({ scale: scale });
 
-        // 动态计算缩放比例
-        const viewportUnscaled = page.getViewport({ scale: 1 });
-        const scale = containerWidth / viewportUnscaled.width;
-        const viewport = page.getViewport({ scale: scale });
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            viewer.appendChild(canvas);
 
-        // 创建并设置 canvas
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        viewer.appendChild(canvas);
-
-        // 渲染页面内容到 canvas
-        await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+            await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+          })(),
+        );
       }
+      await Promise.all(renderTasks);
     } catch (error) {
       console.error(`渲染 PDF (${url}) 时出错:`, error);
       viewer.innerHTML = `<p style="color: red;">加载 PDF 失败: ${error.message}</p>`;
     }
   }
-
-  /**
-   * 找到页面上所有的 PDF 组件并初始化它们。
-   */
   function initializeAllPdfViewers() {
     const containers = document.querySelectorAll(".pdf-scroll-container");
     containers.forEach(renderPdfInstance);
   }
-
-  // 监听 Astro 的页面加载事件，以确保在客户端导航后脚本能重新运行
   document.addEventListener("astro:page-load", initializeAllPdfViewers);
-
-  // 同时直接调用一次，以处理首次加载
   initializeAllPdfViewers();
 </script>
